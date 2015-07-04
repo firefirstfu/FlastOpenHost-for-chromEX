@@ -1,0 +1,24 @@
+sublime test update
+
+# --------------
+# Please enter the commit message for your changes. Everything below
+# this paragraph is ignored, and an empty message aborts the commit.
+# Just close the window to accept your message.
+diff --git a/2015-6-1-ChromeEX/background.js b/2015-6-1-ChromeEX/background.js
+index 53c897a..ffa9610 100644
+--- a/2015-6-1-ChromeEX/background.js
++++ b/2015-6-1-ChromeEX/background.js
+@@ -3,11 +3,12 @@ chrome.tabs.onUpdated.addListener(checkUrl);
+ 
+ function checkUrl(tabId, changeInfo, tab) {
+ 	var str = tab.url;
+-	var patt1 = new RegExp(/^file:\/\//);
++	// var patt1 = new RegExp(/^file:\/\//);
++	// var patt2 = new RegExp(/.*htdocs.*/);
++	var patt1 = new RegExp(/^file.*htdocs.*/);
+ 	if(patt1.test(str)){
+ 		// var temp = str.replace(/^file:\/\/Applications\/MAMP\//, "");
+ 		var temp = str.replace(/^file.*cs/, "localhost:8888");
+ 		chrome.tabs.update(tab.id, {url: temp});
+-	}
+ }
